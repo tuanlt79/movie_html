@@ -1,0 +1,311 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* chỉnh .carousel đè lên header */
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+}
+.header .navbar-nav {
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+.header .nav-item {
+  position: relative;
+}
+.header .nav-item::after {
+  /* thêm 1 thẻ vào sử dụng before thêm ở đầu, after ở cuối*/
+  content: "";
+
+  /* chỉnh động cho thanh lúc đầu width=0 tăng dần */
+  width: 0;
+  /* ------ */
+  height: 2px;
+  background-image: linear-gradient(to right, #fbbd61, #ec7532);
+  box-shadow: 0 0 20px 0 #fbbd61;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+/* lụm ra cái after trong nav-item */
+.header .nav-item:hover::after {
+  width: 100%;
+  transition: width 0.3s linear;
+  -webkit-transition: width 0.3s linear;
+  -moz-transition: width 0.3s linear;
+  -ms-transition: width 0.3s linear;
+  -o-transition: width 0.3s linear;
+}
+/* chỉnh trang mặc định có sẵn thanh màu, gọi active có sẵn trong thẻ có sẵn */
+.header .nav-item.active::after {
+  width: 100%;
+}
+.header .nav-link {
+  font-weight: 300;
+  font-size: 14px;
+}
+/* ---------------------------------------- */
+.slider .carousel-caption {
+  left: 50%;
+  top: 50%;
+  text-align: left;
+  /*initial là trở lại ban đầu*/
+  bottom: initial;
+  /* cho vào giữa banner */
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+}
+.slider .carousel-caption p {
+  font-weight: 500;
+  font-size: 18px;
+}
+.slider .carousel-caption .play span {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  /* độ dày của viền tròn, thêm important cho đè bootraps */
+  border-width: 2px !important;
+  /* chữ vào giữa */
+  text-align: center;
+  /* chữ vào giữa bằng chiều cao dòng */
+  line-height: 33px;
+}
+.slider .carousel-caption .play button {
+  background: linear-gradient(to right, #fbbd61, #ec7532);
+  border: none;
+  padding: 10px 30px;
+  /* bo cong viền */
+  border-radius: 200px;
+  /* khoảng cách giữa các ký tự */
+  letter-spacing: 3px;
+  /* nhấn chuột bỏ đường viền màu đen */
+  outline: none;
+}
+/* tạo lớp mờ màu đen  cách 1*/
+/* .slider .overlay { */
+/* cha nó có position:  ở carousel-inner */
+/* position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(transparent, #000000);
+} */
+
+.slider .carousel-item::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(transparent, #000000);
+}
+.slider .carousel-item {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 700px;
+}
+.slider .carousel-item1 {
+  background-image: url(../images/hero-1.jpg);
+}
+.slider .carousel-item2 {
+  background-image: url(../images/hero-3.jpg);
+}
+.slider .carousel-item3 {
+  background-image: url(../images/hero-2.jpg);
+}
+/* ---------------------------------- */
+.new .item .img {
+  border-radius: 10px;
+  /* chỉnh cong hiện ra không bị đè */
+  overflow: hidden;
+  position: relative;
+}
+.new .img .img img {
+  display: block;
+  width: 100%;
+}
+/* chỉnh detail vô giữa hình */
+.new .item .detail {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  /* chỉnh vô giữa hình */
+  display: flex;
+  /* chỉnh dọc content theo cột từng dòng */
+  flex-direction: column;
+  /* vô giữa  */
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+
+  /* gắn động */
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.8);
+  transition: all 0.4s;
+}
+.new .item .img:hover .detail {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+.new .item .detail i {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  /* icon vô giữa  */
+  text-align: center;
+  line-height: 80px;
+}
+/* chỉnh transition tăng dần */
+.new .item .img::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+
+  width: 0;
+  height: 100%;
+
+  transform: skewx(45deg);
+  background: linear-gradient(to right, #fbbd61, #ec7532);
+
+  transition: all 0.5s;
+}
+
+.new .item .img:hover::before {
+  width: 300%;
+}
+.new .item .detail a {
+  font-size: 12px;
+  margin: 10px 0;
+  font-weight: 500;
+  letter-spacing: 3px;
+}
+.new .item {
+  text-align: center;
+}
+.new .item p {
+  padding-top: 20px;
+}
+.new .item i {
+  color: #ec7532;
+}
+/* ----------------------- */
+.schedue .nav-tab .nav-link:hover {
+  border-color: transparent;
+}
+.schedue .nav-item .nav-link {
+  color: #4a4a4a;
+}
+.schedue .nav-item {
+  padding: 5px 20px;
+  position: relative;
+}
+.schedue .nav-link::after {
+  /* thêm 1 thẻ vào sử dụng before thêm ở đầu, after ở cuối*/
+  content: "";
+
+  /* chỉnh động cho thanh lúc đầu width=0 tăng dần */
+  width: 0;
+  /* ------ */
+  height: 2px;
+  background-image: linear-gradient(to right, #fbbd61, #ec7532);
+  box-shadow: 0 0 20px 0 #fbbd61;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transition: all 0.4s;
+}
+/* chuyển cái active xuống tab tiếp theo khác khi nhấn */
+.schedue .nav-tab .nav-link.active {
+  border-color: transparent;
+}
+
+.schedue .nav-item:hover .nav-link::after {
+  width: 100%;
+}
+/* nhấn giữ lại viền */
+.schedue .nav-link.active::after {
+  width: 100%;
+}
+
+/* ################## */
+
+.schedue .row img {
+  border-radius: 10px;
+}
+.schedue .row .title {
+  color: #ec7532;
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+.schedue .row > h1 {
+  font-size: 23px;
+}
+.schedue .row .title-2 {
+  font-size: 24px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  color: #101010;
+}
+
+/* RESPONSIVE WEBSITE */
+/* 1- điện thoại =< 576px */
+/* 2- máy tính bảng <= 768 px */
+/* 3- máy tính bảng lớn <=  992px */
+/* 4- máy tính bảng lớn, laptop cỡ nhỏ (ipad pro) <=  1200px */
+/* để code từ lớn tới bé */
+
+@media screen and (max-width: 1200px) {
+}
+@media screen and (max-width: 992px) {
+}
+@media screen and (max-width: 768px) {
+  .slider .carousel-caption h1 {
+    font-size: 40px;
+  }
+  /* -------chỉnh button menu--- */
+  .header .navbar-collapse {
+    background: rgba(0, 0, 0, 0.95);
+  }
+  .header .nav-item {
+    text-align: center;
+    padding: 10px 0;
+  }
+}
+@media screen and (max-width: 576px) {
+  .slider .carousel-item > img {
+    height: 650px;
+  }
+  .slider .carousel-caption h1 {
+    font-size: 35px;
+  }
+  .slider .carousel-caption > span {
+    font-size: 14px;
+  }
+  .slider .carousel-caption p {
+    font-size: 13px;
+    font-weight: 300;
+  }
+  .slider .carousel-caption .play span {
+    font-size: 14px;
+    border-width: 1px !important;
+  }
+  .slider .carousel-caption .play button {
+    font-size: 13px;
+  }
+}
